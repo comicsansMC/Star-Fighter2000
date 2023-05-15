@@ -31,7 +31,10 @@ public abstract class MovingThing implements Moveable
 
 	public MovingThing(int x, int y, int w, int h)
 	{
-		//add code here
+		xPos = x;
+		yPos = y;
+		width = w;
+		height = h;
 	}
 
 	public void setPos( int x, int y)
