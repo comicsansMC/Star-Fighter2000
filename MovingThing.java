@@ -14,6 +14,7 @@ public abstract class MovingThing implements Moveable
 
 	public MovingThing()
 	{
+		//Test Commit - Liz
 		xPos = 10;
 		yPos = 10;
 		width = 10;
