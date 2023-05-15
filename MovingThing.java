@@ -31,6 +31,7 @@ public abstract class MovingThing implements Moveable
 
 	public MovingThing(int x, int y, int w, int h)
 	{
+		//this is my super radical comment -Shane
 		xPos = x;
 		yPos = y;
 		width = w;
