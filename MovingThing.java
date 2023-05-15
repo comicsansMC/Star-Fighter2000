@@ -1,6 +1,6 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
+//Name - Shane & Liz
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -55,12 +55,12 @@ public abstract class MovingThing implements Moveable
 
 	public int getX()
 	{
-		return xPos;   //finish this method
+		return xPos;
 	}
 
 	public int getY()
 	{
-		return yPos;  //finish this method
+		return yPos;
 	}
 
 	public void setWidth(int w)
@@ -75,12 +75,12 @@ public abstract class MovingThing implements Moveable
 
 	public int getWidth()
 	{
-		return width;  //finish this method
+		return width;
 	}
 
 	public int getHeight()
 	{
-		return height;  //finish this method
+		return height;
 	}
 
 	public abstract void move(String direction);
