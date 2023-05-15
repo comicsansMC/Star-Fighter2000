@@ -39,17 +39,18 @@ public abstract class MovingThing implements Moveable
 
 	public void setPos( int x, int y)
 	{
-		//add code here
+		xPos = x;
+		yPos = y;
 	}
 
 	public void setX(int x)
 	{
-		//add code here
+		xPos = x;
 	}
 
 	public void setY(int y)
 	{
-		//add code here
+		yPos = y;
 	}
 
 	public int getX()
@@ -64,12 +65,12 @@ public abstract class MovingThing implements Moveable
 
 	public void setWidth(int w)
 	{
-		//add code here
+		width = w;
 	}
 
 	public void setHeight(int h)
 	{
-		//add code here
+		height = h;
 	}
 
 	public int getWidth()
