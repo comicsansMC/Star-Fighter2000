@@ -31,7 +31,6 @@ public abstract class MovingThing implements Moveable
 
 	public MovingThing(int x, int y, int w, int h)
 	{
-		//this is my super radical comment -Shane
 		xPos = x;
 		yPos = y;
 		width = w;
@@ -55,12 +54,12 @@ public abstract class MovingThing implements Moveable
 
 	public int getX()
 	{
-		return 0;   //finish this method
+		return xPos;   //finish this method
 	}
 
 	public int getY()
 	{
-		return 0;  //finish this method
+		return yPos;  //finish this method
 	}
 
 	public void setWidth(int w)
@@ -75,12 +74,12 @@ public abstract class MovingThing implements Moveable
 
 	public int getWidth()
 	{
-		return 0;  //finish this method
+		return width;  //finish this method
 	}
 
 	public int getHeight()
 	{
-		return 0;  //finish this method
+		return height;  //finish this method
 	}
 
 	public abstract void move(String direction);
