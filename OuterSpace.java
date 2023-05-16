@@ -37,36 +37,40 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
 		//instantiate other instance variables
 		//Ship, Alien
-
+		alienOne = new Alien(200, 500);
+		alienTwo = new Alien(600, 500);
+		
 		this.addKeyListener(this);
 		new Thread(this).start();
-
+		
 		setVisible(true);
 	}
-
-   public void update(Graphics window)
-   {
-	   paint(window);
-   }
-
+	
+	public void update(Graphics window)
+	{
+		paint(window);
+	}
+	
 	public void paint( Graphics window )
 	{
 		//set up the double buffering to make the game animation nice and smooth
 		Graphics2D twoDGraph = (Graphics2D)window;
-
+		
 		//take a snap shop of the current screen and same it as an image
 		//that is the exact same width and height as the current screen
 		if(back==null)
-		   back = (BufferedImage)(createImage(getWidth(),getHeight()));
-
+		back = (BufferedImage)(createImage(getWidth(),getHeight()));
+		
 		//create a graphics reference to the back ground image
 		//we will draw all changes on the background image
 		Graphics graphToBack = back.createGraphics();
-
+		
 		graphToBack.setColor(Color.BLUE);
 		graphToBack.drawString("StarFighter ", 25, 50 );
 		graphToBack.setColor(Color.BLACK);
 		graphToBack.fillRect(0,0,800,600);
+		alienOne.draw(window);
+		alienTwo.draw(window);
 
 		if(keys[0] == true)
 		{
