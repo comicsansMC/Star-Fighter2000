@@ -16,18 +16,24 @@ public class AlienHorde
 
 	public AlienHorde(int size)
 	{
+	
 	}
 
 	public void add(Alien al)
 	{
+		aliens.add(al);
 	}
 
 	public void drawEmAll( Graphics window )
 	{
+		for(int i = 0; i < aliens.size();i++){
+			
+		}
 	}
 
 	public void moveEmAll()
 	{
+		
 	}
 
 	public void removeDeadOnes(List<Ammo> shots)
