@@ -57,7 +57,15 @@ public class Alien extends MovingThing
 
    public void move(String direction)
 	{
-
+		if(direction.equals("LEFT")){
+			this.setX(this.getX() - speed);
+		} else if(direction.equals("RIGHT")){
+			this.setX(this.getX() + speed);
+		}else if(direction.equals("UP")){
+			this.setX(this.getY() + speed);
+		}else if(direction.equals("DOWN")){
+			this.setX(this.getY() - speed);
+		}
 	}
 
 	public void draw( Graphics window )
