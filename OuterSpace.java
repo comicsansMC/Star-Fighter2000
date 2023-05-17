@@ -22,9 +22,9 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	
 	/* uncomment once you are ready for this part
 	*
-	private AlienHorde horde;
 	private Bullets shots;
 	*/
+	private AlienHorde horde;
 	
 	private boolean[] keys;
 	private BufferedImage back;
@@ -41,11 +41,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		
 		
 		ship = new Ship(400, 300, 100, 100, 5);
-		alienOne = new Alien(200, 100, 50, 50, 2);
-		alienTwo = new Alien(600, 100, 50, 50, 2);
-		Bullets bullets = new Bullets();
+		// alienOne = new Alien(200, 100, 50, 50, 2);
+		// alienTwo = new Alien(600, 100, 50, 50, 2);
 
-		
+		horde = new AlienHorde(20);
 
 		
 
@@ -58,10 +57,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
    public void update(Graphics window)
    {
 	ship.draw(window);
-	alienOne.draw(window);
-	alienTwo.draw(window);
-		paint(window);
-		
+	// alienOne.draw(window);
+	// alienTwo.draw(window);
+	horde.drawEmAll(window);	
+	paint(window);
    }
 
 	public void paint( Graphics window )
@@ -102,20 +101,24 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 			ship.move("DOWN");
 		}
 
+		// alienOne.move(alienDirection);
+		// alienTwo.move(alienDirection);
 		if(keys[4]){
 			Ammo bullet = new Ammo(ship.getX(), ship.getY(), 5);
 			bullets.add(bullet);
 		}
 
-		alienOne.move(alienDirection);
-		alienTwo.move(alienDirection);
+		// alienOne.move(alienDirection);
+		// alienTwo.move(alienDirection);
 
-		if(alienOne.getX() == 0){
-			alienDirection ="RIGHT";
-		} else if (alienTwo.getX() == 726){
-			alienDirection ="LEFT";
-		}
+		// if(alienOne.getX() == 0){
+		// 	alienDirection ="RIGHT";
+		// } else if (alienTwo.getX() == 726){
+		// 	alienDirection ="LEFT";
+		// }
 		
+		horde.moveEmAll();
+
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
 
 
