@@ -107,8 +107,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 			
 		}
 
-		alienOne.move(alienDirection);
-		alienTwo.move(alienDirection);
+		// alienOne.move(alienDirection);
+		// alienTwo.move(alienDirection);
 
 		// if(alienOne.getX() == 0){
 		// 	alienDirection ="RIGHT";
