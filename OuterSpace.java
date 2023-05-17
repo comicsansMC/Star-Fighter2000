@@ -37,18 +37,23 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
 		//instantiate other instance variables
 		//Ship, Alien
-
+		
+		
 		ship = new Ship(400, 300, 100, 100, 5);
+		alienOne = new Alien(200, 100, 100, 100, 10);
+		alienTwo = new Alien(600, 100, 100, 100, 10);
 
 		this.addKeyListener(this);
 		new Thread(this).start();
-
+		
 		setVisible(true);
 	}
 
    public void update(Graphics window)
    {
 	ship.draw(window);
+	alienOne.draw(window);
+	alienTwo.draw(window);
 		paint(window);
 	   
    }
@@ -91,6 +96,9 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 			ship.move("DOWN");
 		}
 
+		// if(alienTwo != 600){
+		// 	s
+		// }
 		
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
 
