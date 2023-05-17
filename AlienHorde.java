@@ -18,7 +18,19 @@ public class AlienHorde
 	public AlienHorde(int size)
 	{
 		for (int i= 0; i < size; i++){
-			add(new Alien(100 + (50 *i), 200, 50, 50, 2));
+			if (i <10){
+			add(new Alien(100 + (50 *i), 50, 50, 50, 2));
+			} else if(i < 20){
+				add(new Alien(100 + (50 * (i - 10)), 100, 50, 50, 2));	
+			}else if(i < 30){
+				add(new Alien(100 + (50 * (i - 20)), 150, 50, 50, 2));	
+			}else if(i < 40){
+				add(new Alien(100 + (50 * (i - 30)), 200, 50, 50, 2));	
+			}else if(i < 50){
+				add(new Alien(100 + (50 * (i - 40)), 250, 50, 50, 2));	
+			}else if(i < 60){
+				add(new Alien(100 + (50 * (i - 50)), 300, 50, 50, 2));	
+			}
 		}
 	}
 

@@ -44,7 +44,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		// alienOne = new Alien(200, 100, 50, 50, 2);
 		// alienTwo = new Alien(600, 100, 50, 50, 2);
 
-		horde = new AlienHorde(10);
+		horde = new AlienHorde(20);
 
 		
 
