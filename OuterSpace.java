@@ -43,6 +43,9 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		ship = new Ship(400, 300, 100, 100, 5);
 		alienOne = new Alien(200, 100, 50, 50, 2);
 		alienTwo = new Alien(600, 100, 50, 50, 2);
+		Bullets bullets = new Bullets();
+
+		
 
 		
 
@@ -100,7 +103,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		}
 
 		if(keys[4]){
-			
+			Ammo bullet = new Ammo(ship.getX(), ship.getY(), 5);
+			bullets.add(bullet);
 		}
 
 		alienOne.move(alienDirection);
