@@ -46,6 +46,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
 		horde = new AlienHorde(10);
 
+		
+
 		this.addKeyListener(this);
 		new Thread(this).start();
 		
@@ -101,6 +103,12 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
 		// alienOne.move(alienDirection);
 		// alienTwo.move(alienDirection);
+		if(keys[4]){
+			
+		}
+
+		alienOne.move(alienDirection);
+		alienTwo.move(alienDirection);
 
 		// if(alienOne.getX() == 0){
 		// 	alienDirection ="RIGHT";
