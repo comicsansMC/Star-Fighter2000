@@ -55,6 +55,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	alienOne.draw(window);
 	alienTwo.draw(window);
 		paint(window);
+		
    }
 
 	public void paint( Graphics window )
@@ -95,6 +96,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 			ship.move("DOWN");
 		}
 
+		if(keys[4]){
+			
+		}
+		
 		// if(alienTwo != 600){
 		// 	s
 		// }
