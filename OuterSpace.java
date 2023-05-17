@@ -19,15 +19,16 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	private Ship ship;
 	private Alien alienOne;
 	private Alien alienTwo;
-
+	
 	/* uncomment once you are ready for this part
-	 *
-   private AlienHorde horde;
+	*
+	private AlienHorde horde;
 	private Bullets shots;
 	*/
-
+	
 	private boolean[] keys;
 	private BufferedImage back;
+	String alienDirection = "LEFT";
 
 	public OuterSpace()
 	{
@@ -40,8 +41,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		
 		
 		ship = new Ship(400, 300, 100, 100, 5);
-		alienOne = new Alien(200, 100, 100, 100, 10);
-		alienTwo = new Alien(600, 100, 100, 100, 10);
+		alienOne = new Alien(200, 100, 50, 50, 2);
+		alienTwo = new Alien(600, 100, 50, 50, 2);
 
 		this.addKeyListener(this);
 		new Thread(this).start();
@@ -95,9 +96,14 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 			ship.move("DOWN");
 		}
 
-		// if(alienTwo != 600){
-		// 	s
-		// }
+		alienOne.move(alienDirection);
+		alienTwo.move(alienDirection);
+
+		if(alienOne.getX() == 0){
+			alienDirection ="RIGHT";
+		} else if (alienTwo.getX() == 726){
+			alienDirection ="LEFT";
+		}
 		
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
 
