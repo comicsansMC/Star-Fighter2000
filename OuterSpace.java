@@ -44,6 +44,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		alienOne = new Alien(200, 100, 50, 50, 2);
 		alienTwo = new Alien(600, 100, 50, 50, 2);
 
+		
+
 		this.addKeyListener(this);
 		new Thread(this).start();
 		
@@ -95,6 +97,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
 		if(keys[3]){
 			ship.move("DOWN");
+		}
+
+		if(keys[4]){
+			
 		}
 
 		alienOne.move(alienDirection);
