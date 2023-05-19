@@ -14,13 +14,13 @@ public class Bullets
 {
 	private List<Ammo> ammo;
 
-	public Bullets()
-	{
+	public Bullets(){
+		ammo = new ArrayList<>();
 	}
 
 	public void add(Ammo al)
 	{
-		ammo.add(al)
+		ammo.add(al);
 	}
 
 	//post - draw each Ammo
@@ -40,6 +40,7 @@ public class Bullets
 
 	public void cleanEmUp()
 	{
+		
 		for(int i=0; i<ammo.size(); i++){
 			if(ammo.get(i).getY()<-10){
 				ammo.remove(i);

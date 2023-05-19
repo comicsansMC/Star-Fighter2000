@@ -19,6 +19,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	private Ship ship;
 	private Alien alienOne;
 	private Alien alienTwo;
+	private Bullets bullets;
 	
 	/* uncomment once you are ready for this part
 	*
@@ -46,7 +47,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
 		horde = new AlienHorde(20);
 
-		
+		bullets = new Bullets();
 
 		this.addKeyListener(this);
 		new Thread(this).start();
@@ -59,7 +60,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	ship.draw(window);
 	// alienOne.draw(window);
 	// alienTwo.draw(window);
-	horde.drawEmAll(window);	
+	horde.drawEmAll(window);
+	if(bullets.getList() != null){
+		bullets.drawEmAll(window);	
+	}
 	paint(window);
    }
 
@@ -92,22 +96,23 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		if(keys[1]){
 			ship.move("RIGHT");
 		}
-
+		
 		if(keys[2]){
 			ship.move("UP");
 		}
-
+		
 		if(keys[3]){
 			ship.move("DOWN");
 		}
-
+		
 		// alienOne.move(alienDirection);
 		// alienTwo.move(alienDirection);
 		if(keys[4]){
-			Ammo bullet = new Ammo(ship.getX(), ship.getY(), 5);
+			Ammo bullet = new Ammo(ship.getX() +50, ship.getY() + 50, 5);
 			bullets.add(bullet);
 		}
-
+		
+		bullets.moveEmAll();
 		// alienOne.move(alienDirection);
 		// alienTwo.move(alienDirection);
 
