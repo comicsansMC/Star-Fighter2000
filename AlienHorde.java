@@ -17,19 +17,54 @@ public class AlienHorde
 
 	public AlienHorde(int size)
 	{
-		for (int i= 0; i < size; i++){
-			if (i <10){
-			add(new Alien(100 + (50 *i), 50, 50, 50, 2));
-			} else if(i < 20){
-				add(new Alien(100 + (50 * (i - 10)), 100, 50, 50, 2));	
-			}else if(i < 30){
-				add(new Alien(100 + (50 * (i - 20)), 150, 50, 50, 2));	
-			}else if(i < 40){
-				add(new Alien(100 + (50 * (i - 30)), 200, 50, 50, 2));	
-			}else if(i < 50){
-				add(new Alien(100 + (50 * (i - 40)), 250, 50, 50, 2));	
-			}else if(i < 60){
-				add(new Alien(100 + (50 * (i - 50)), 300, 50, 50, 2));	
+		int firstLines = (600-(10*50)) / (11);
+		
+		int amountOfFirsts = 0;
+		
+		if(size>10){
+			amountOfFirsts = size/10;
+		}
+		
+		int spaceBetween = (600-((size-(amountOfFirsts*10))*50))/((size-(amountOfFirsts*10))+1);
+		
+		// for (int i= 0; i < size; i++){
+		// 	if (i <10){
+		// 	add(new Alien(100 + (50 *i), 50, 50, 50, 2));
+		// 	} else if(i < 20){
+		// 		add(new Alien(100 + (50 * (i - 10)), 100, 50, 50, 2));	
+		// 	}else if(i < 30){
+		// 		add(new Alien(100 + (50 * (i - 20)), 150, 50, 50, 2));	
+		// 	}else if(i < 40){
+		// 		add(new Alien(100 + (50 * (i - 30)), 200, 50, 50, 2));	
+		// 	}else if(i < 50){
+		// 		add(new Alien(100 + (50 * (i - 40)), 250, 50, 50, 2));	
+		// 	}else if(i < 60){
+		// 		add(new Alien(100 + (50 * (i - 50)), 300, 50, 50, 2));	
+		// 	}
+		// }
+
+		if(amountOfFirsts>0){
+			for(int i=0; i<amountOfFirsts; i++){
+				
+				for(int j=0; j<10; j++){
+					add(new Alien(100 + firstLines*(j+1) + (50*j) - 12, 50 + (50*i), 50, 50, 1));
+				}
+				
+				
+				
+				
+			}
+		}
+		if(amountOfFirsts>0){
+			for(int i=0; i<(size-amountOfFirsts*10); i++){
+				add(new Alien(100+ spaceBetween*(i+1) + (50*i) - 12, 50 + (50*amountOfFirsts), 50, 50, 1));
+			}
+		}
+		else{
+			int smallBetween = (800-(size*50))/(size+1);
+			
+			for(int i=0; i<size; i++){
+				add(new Alien(smallBetween*(i+1) + (50*i) -12, 50, 50, 50 , 1));
 			}
 		}
 	}

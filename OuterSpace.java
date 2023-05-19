@@ -45,7 +45,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		// alienOne = new Alien(200, 100, 50, 50, 2);
 		// alienTwo = new Alien(600, 100, 50, 50, 2);
 
-		horde = new AlienHorde(20);
+		horde = new AlienHorde(25);
 
 		bullets = new Bullets();
 
@@ -108,7 +108,7 @@ public void paint( Graphics window )
 			keys[4]=false;
 		}
 		
-		ship.draw(twoDGraph);
+		ship.draw(graphToBack);
 		// alienOne.draw(window);
 		// alienTwo.draw(window);
 		// alienOne.move(alienDirection);
@@ -119,14 +119,18 @@ public void paint( Graphics window )
 			// } else if (alienTwo.getX() == 726){
 				// 	alienDirection ="LEFT";
 				// }
-		if(bullets.getList() != null){
-		bullets.drawEmAll(twoDGraph);	
-		}
+		
 		
 		bullets.moveEmAll();
+		if(bullets.getList() != null){
+			bullets.drawEmAll(graphToBack);	
+		}
+		
+		
 				
-		horde.drawEmAll(twoDGraph);
 		horde.moveEmAll();
+		horde.drawEmAll(graphToBack);
+		
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
 
