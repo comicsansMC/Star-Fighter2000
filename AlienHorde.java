@@ -14,7 +14,8 @@ public class AlienHorde
 {
 	private List<Alien> aliens = new ArrayList<>();
 	String direction ="LEFT";
-
+	int x=5;
+	
 	public AlienHorde(int size)
 	{
 		int firstLines = (600-(10*50)) / (11);
@@ -24,7 +25,7 @@ public class AlienHorde
 		if(size>10){
 			amountOfFirsts = size/10;
 		}
-		
+
 		int spaceBetween = (600-((size-(amountOfFirsts*10))*50))/((size-(amountOfFirsts*10))+1);
 		
 		// for (int i= 0; i < size; i++){
@@ -83,14 +84,35 @@ public class AlienHorde
 
 	public void moveEmAll()
 	{
-		for(int i = 0; i < aliens.size();i++){
-			aliens.get(i).move(direction);
-			if(aliens.get(i).getX() == 0){
-				direction = "RIGHT";
-			} else if (aliens.get(i).getX() == 726){
-				direction = "LEFT";
+		// for(int i = 0; i < aliens.size();i++){
+		// 	aliens.get(i).move(direction);
+		// 	if(aliens.get(i).getX() == 0){
+		// 		direction = "RIGHT";
+		// 	} else if (aliens.get(i).getX() == 726){
+		// 		direction = "LEFT";
+		// 	}
+		// }
+
+		if(x==5){
+			for(int i=0; i<aliens.size(); i++){
+				aliens.get(i).move(direction);
 			}
 		}
+		
+
+			for(int i=0; i<aliens.size(); i++){
+				if(aliens.get(i).getX() <= 5){
+					aliens.get(i).move("RIGHT");
+					x = 3;
+				}
+				if(aliens.get(i).getX() >= 745){
+					aliens.get(i).move("LEFT");
+					x = 3;
+				}
+				
+			}
+
+
 	}
 
 	public void removeDeadOnes(List<Ammo> shots)
@@ -107,6 +129,10 @@ public class AlienHorde
 				}
 			}
 		}
+	}
+
+	public List<Alien> getList(){
+		return aliens;
 	}
 
 	public String toString()

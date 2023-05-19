@@ -21,6 +21,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	private Alien alienTwo;
 	private Bullets bullets;
 	
+	private int run = 0;
+
 	/* uncomment once you are ready for this part
 	*
 	private Bullets shots;
@@ -125,7 +127,10 @@ public void paint( Graphics window )
 		}
 		
 				
+		
+		
 		horde.moveEmAll();
+		
 		horde.drawEmAll(graphToBack);
 
 		horde.removeDeadOnes(bullets.getList());

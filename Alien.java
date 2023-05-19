@@ -41,7 +41,7 @@ public class Alien extends MovingThing
 		}
 		catch(Exception e)
 		{
-			//feel free to do something here
+			System.out.print("Something donked up with the alien image");
 		}
 	}
 
@@ -75,6 +75,6 @@ public class Alien extends MovingThing
 
 	public String toString()
 	{
-		return "";
+		return super.toString() + speed;
 	}
 }
