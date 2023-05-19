@@ -55,36 +55,30 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		setVisible(true);
 	}
 
-   public void update(Graphics window)
-   {
-	ship.draw(window);
-	// alienOne.draw(window);
-	// alienTwo.draw(window);
-	horde.drawEmAll(window);
-	if(bullets.getList() != null){
-		bullets.drawEmAll(window);	
+   public void update(Graphics window){
+   paint(window);
 	}
-	paint(window);
-   }
 
-	public void paint( Graphics window )
-	{
-		//set up the double buffering to make the game animation nice and smooth
-		// Graphics2D twoDGraph = (Graphics2D)window;
+public void paint( Graphics window )
+{
+	//set up the double buffering to make the game animation nice and smooth
 
-		// //take a snap shop of the current screen and same it as an image
-		// //that is the exact same width and height as the current screen
-		// if(back==null)
-		//    back = (BufferedImage)(createImage(getWidth(),getHeight()));
+		Graphics2D twoDGraph = (Graphics2D)window;
 
-		// //create a graphics reference to the back ground image
-		// //we will draw all changes on the background image
-		// Graphics graphToBack = back.createGraphics();
+		//take a snap shop of the current screen and same it as an image
+		//that is the exact same width and height as the current screen
+		if(back==null)
+		   back = (BufferedImage)(createImage(getWidth(),getHeight()));
 
-		// graphToBack.setColor(Color.BLUE);
-		// graphToBack.drawString("StarFighter ", 25, 50 );
-		// graphToBack.setColor(Color.BLACK);
-		// graphToBack.fillRect(0,0,800,600);
+		//create a graphics reference to the back ground image
+		//we will draw all changes on the background image
+		Graphics graphToBack = back.createGraphics();
+
+		graphToBack.setColor(Color.BLUE);
+		graphToBack.drawString("StarFighter ", 25, 50 );
+		graphToBack.setColor(Color.BLACK);
+		graphToBack.fillRect(0,0,800,600);
+
 
 		if(keys[0] == true)
 		{
@@ -108,26 +102,36 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		// alienOne.move(alienDirection);
 		// alienTwo.move(alienDirection);
 		if(keys[4]){
-			Ammo bullet = new Ammo(ship.getX() +50, ship.getY() + 50, 5);
+			Ammo bullet = new Ammo(ship.getX() + ship.getWidth()/2, ship.getY(), 5);
 			bullets.add(bullet);
+			keys[4] = false;
+		}
+		
+		ship.draw(twoDGraph);
+		// alienOne.draw(window);
+		// alienTwo.draw(window);
+		// alienOne.move(alienDirection);
+		// alienTwo.move(alienDirection);
+		
+		// if(alienOne.getX() == 0){
+			// 	alienDirection ="RIGHT";
+			// } else if (alienTwo.getX() == 726){
+				// 	alienDirection ="LEFT";
+				// }
+		if(bullets.getList() != null){
+		bullets.drawEmAll(twoDGraph);	
 		}
 		
 		bullets.moveEmAll();
-		// alienOne.move(alienDirection);
-		// alienTwo.move(alienDirection);
-
-		// if(alienOne.getX() == 0){
-		// 	alienDirection ="RIGHT";
-		// } else if (alienTwo.getX() == 726){
-		// 	alienDirection ="LEFT";
-		// }
-		
+				
+		horde.drawEmAll(twoDGraph);
 		horde.moveEmAll();
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
 
 
-		// twoDGraph.drawImage(back, null, 0, 0);
+		twoDGraph.drawImage(back, null, 0, 0);
+
 	}
 
 
