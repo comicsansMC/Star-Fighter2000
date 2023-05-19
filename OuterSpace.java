@@ -55,9 +55,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		setVisible(true);
 	}
 
-   public void update(Graphics window){
-   paint(window);
-	}
+   public void update(Graphics window)
+   {
+	paint(window);
+   }
 
 public void paint( Graphics window )
 {
@@ -102,9 +103,9 @@ public void paint( Graphics window )
 		// alienOne.move(alienDirection);
 		// alienTwo.move(alienDirection);
 		if(keys[4]){
-			Ammo bullet = new Ammo(ship.getX() + ship.getWidth()/2, ship.getY(), 5);
+			Ammo bullet = new Ammo(ship.getX() + (ship.getWidth()/2), ship.getY(), 5);
 			bullets.add(bullet);
-			keys[4] = false;
+			keys[4]=false;
 		}
 		
 		ship.draw(twoDGraph);
