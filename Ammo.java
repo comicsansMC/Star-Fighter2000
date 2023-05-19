@@ -49,6 +49,8 @@ public class Ammo extends MovingThing
 	{
 		if(direction.equals("UP")){
 			this.setY(this.getY()-speed);
+		} else if (direction.equals("DOWN")){
+			this.setY(this.getY()+speed);
 		}
 	}
 
