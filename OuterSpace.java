@@ -119,18 +119,16 @@ public void paint( Graphics window )
 			// } else if (alienTwo.getX() == 726){
 				// 	alienDirection ="LEFT";
 				// }
-		
-		
 		bullets.moveEmAll();
 		if(bullets.getList() != null){
-			bullets.drawEmAll(graphToBack);	
+		bullets.drawEmAll(graphToBack);	
 		}
-		
 		
 				
 		horde.moveEmAll();
 		horde.drawEmAll(graphToBack);
-		
+
+		horde.removeDeadOnes(bullets.getList());
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
 
