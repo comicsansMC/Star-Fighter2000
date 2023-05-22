@@ -31,10 +31,10 @@ public class Bullets
 		}
 	}
 
-	public void moveEmAll()
+	public void moveEmAll(String direction)
 	{
 		for(int i=0; i<ammo.size(); i++){
-			ammo.get(i).move("UP");
+			ammo.get(i).move(direction);
 		}
 	}
 
