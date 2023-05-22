@@ -12,11 +12,14 @@ import java.awt.event.KeyEvent;
 import static java.lang.Character.*;
 import java.awt.image.BufferedImage;
 import java.io.RandomAccessFile;
+import java.net.URL;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import javax.imageio.ImageIO;
 
 public class OuterSpace extends Canvas implements KeyListener, Runnable
 {
@@ -61,30 +64,31 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		
 		setVisible(true);
 	}
-
-   public void update(Graphics window)
-   {
-	paint(window);
-   }
-
-public void paint( Graphics window )
-{
-	//set up the double buffering to make the game animation nice and smooth
-
+	
+	public void update(Graphics window)
+	{
+		paint(window);
+	}
+	
+	public void paint( Graphics window )
+	{
+		//set up the double buffering to make the game animation nice and smooth
+		
 		Graphics2D twoDGraph = (Graphics2D)window;
-
+		
 		//take a snap shop of the current screen and same it as an image
 		//that is the exact same width and height as the current screen
 		if(back==null)
-		   back = (BufferedImage)(createImage(getWidth(),getHeight()));
-
+		back = (BufferedImage)(createImage(getWidth(),getHeight()));
+		
 		//create a graphics reference to the back ground image
 		//we will draw all changes on the background image
 		Graphics graphToBack = back.createGraphics();
-
+		
 		graphToBack.setColor(Color.BLUE);
 		graphToBack.drawString("StarFighter ", 25, 50 );
 		graphToBack.setColor(Color.BLACK);
+		if(ship.timesShot(alienShots.getList()) <= 3){
 		graphToBack.fillRect(0,0,800,600);
 
 
@@ -115,7 +119,6 @@ public void paint( Graphics window )
 			keys[4]=false;
 		}
 		
-		ship.timesShot(alienShots.getList());
 		ship.draw(graphToBack);
 		
 		// alienOne.draw(window);
@@ -138,19 +141,6 @@ public void paint( Graphics window )
 		horde.drawEmAll(graphToBack);
 
 		horde.removeDeadOnes(bullets.getList());
-
-		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
-	// 	for(int i = 0; i < horde.getList().size(); i++){
-	// 		Random rndNum1 = new Random();
-	// 		Random rndNum2 = new Random();
-	// 	if(rndNum2.nextInt(5000) == rndNum1.nextInt(5000)){
-	// 		Ammo bullet = new Ammo(horde.getList().get(i).getX() + (horde.getList().get(i).getWidth()/2), horde.getList().get(i).getY(), 5);
-	// 		alienShots.add(bullet);
-			
-	// 	}
-	// }
-
-
 		
 	
 	alienShots.moveEmAll("DOWN");
@@ -160,11 +150,14 @@ public void paint( Graphics window )
 	}
 		twoDGraph.drawImage(back, null, 0, 0);
 
+} else {
+	
+}
 	}
 
 	public void alienShots(){
 		Timer timer = new Timer();
-		timer.schedule(new TimedAlienShots(), 2000, 2000);
+		timer.schedule(new TimedAlienShots(), 200, 200);
 	}
 
 	class TimedAlienShots extends TimerTask {
