@@ -11,8 +11,12 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import static java.lang.Character.*;
 import java.awt.image.BufferedImage;
+import java.io.RandomAccessFile;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class OuterSpace extends Canvas implements KeyListener, Runnable
 {
@@ -20,7 +24,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	private Alien alienOne;
 	private Alien alienTwo;
 	private Bullets bullets;
-
+	private Bullets alienShots;
+	
 	/* uncomment once you are ready for this part
 	*
 	private Bullets shots;
@@ -34,9 +39,9 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	public OuterSpace()
 	{
 		setBackground(Color.black);
-
+		
 		keys = new boolean[5];
-
+		
 		//instantiate other instance variables
 		//Ship, Alien
 		
@@ -44,11 +49,13 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		ship = new Ship(400, 300, 100, 100, 3);
 		// alienOne = new Alien(200, 100, 50, 50, 2);
 		// alienTwo = new Alien(600, 100, 50, 50, 2);
-
+		
 		horde = new AlienHorde(25);
-
+		
 		bullets = new Bullets();
-
+		alienShots = new Bullets();
+		alienShots();
+		
 		this.addKeyListener(this);
 		new Thread(this).start();
 		
@@ -108,7 +115,9 @@ public void paint( Graphics window )
 			keys[4]=false;
 		}
 		
+		ship.timesShot(alienShots.getList());
 		ship.draw(graphToBack);
+		
 		// alienOne.draw(window);
 		// alienTwo.draw(window);
 		// alienOne.move(alienDirection);
@@ -119,7 +128,7 @@ public void paint( Graphics window )
 			// } else if (alienTwo.getX() == 726){
 				// 	alienDirection ="LEFT";
 				// }
-		bullets.moveEmAll();
+		bullets.moveEmAll("UP");
 		if(bullets.getList() != null){
 		bullets.drawEmAll(graphToBack);	
 		}
@@ -134,13 +143,44 @@ public void paint( Graphics window )
 		horde.removeDeadOnes(bullets.getList());
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
+	// 	for(int i = 0; i < horde.getList().size(); i++){
+	// 		Random rndNum1 = new Random();
+	// 		Random rndNum2 = new Random();
+	// 	if(rndNum2.nextInt(5000) == rndNum1.nextInt(5000)){
+	// 		Ammo bullet = new Ammo(horde.getList().get(i).getX() + (horde.getList().get(i).getWidth()/2), horde.getList().get(i).getY(), 5);
+	// 		alienShots.add(bullet);
+			
+	// 	}
+	// }
 
 
+		
+	
+	alienShots.moveEmAll("DOWN");
+
+	if(alienShots.getList() != null){
+	alienShots.drawEmAll(graphToBack);
+	}
 		twoDGraph.drawImage(back, null, 0, 0);
 
 	}
 
+	public void alienShots(){
+		Timer timer = new Timer();
+		timer.schedule(new TimedAlienShots(), 2000, 2000);
+	}
 
+	class TimedAlienShots extends TimerTask {
+		public void run() {
+			Ammo bullet = new Ammo(horde.getList().get(getRandomNumber(0, horde.getList().size())).getX() +  horde.getList().get(getRandomNumber(0, horde.getList().size())).getWidth()/2, horde.getList().get(getRandomNumber(0, horde.getList().size())).getY(), 5);
+			alienShots.add(bullet);
+		}
+	}
+
+	public int getRandomNumber(int min, int max) {
+		return (int) ((Math.random() * (max - min)) + min);
+	}
+	
 	public void keyPressed(KeyEvent e)
 	{
 		if (e.getKeyCode() == KeyEvent.VK_LEFT)

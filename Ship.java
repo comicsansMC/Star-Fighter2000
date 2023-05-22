@@ -4,6 +4,7 @@
 
 import java.io.File;
 import java.net.URL;
+import java.util.List;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -13,6 +14,7 @@ public class Ship extends MovingThing
 {
 	private int speed;
 	private Image image;
+	int count= 0;
 
 	public Ship()
 	{
@@ -75,6 +77,22 @@ public class Ship extends MovingThing
 	public void draw( Graphics window )
 	{
    	window.drawImage(image,getX(),getY(),getWidth(),getHeight(),null);
+	}
+
+	public int timesShot(List<Ammo> shots)
+	{
+			for(int j = 0; j < shots.size(); j++){
+				if(this.getY() >= shots.get(j).getY()){
+					if(this.getY() - this.getHeight() <= shots.get(j).getY()){
+					if(this.getX() <= shots.get(j).getX() && this.getX() + this.getWidth() >= shots.get(j).getX()){
+						count += 1;
+						shots.remove(j);
+						System.out.println("Shot" + count);
+					}
+					}
+			}
+		}
+		return count;
 	}
 
 	public String toString()
