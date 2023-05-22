@@ -49,7 +49,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		//Ship, Alien
 		
 		
-		ship = new Ship(400, 300, 100, 100, 5);
+		ship = new Ship(400, 300, 100, 100, 3);
 		// alienOne = new Alien(200, 100, 50, 50, 2);
 		// alienTwo = new Alien(600, 100, 50, 50, 2);
 		
@@ -137,7 +137,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		}
 		
 				
+		
+		
 		horde.moveEmAll();
+		
 		horde.drawEmAll(graphToBack);
 
 		horde.removeDeadOnes(bullets.getList());

@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.imageio.ImageIO;
+import javax.xml.stream.events.StartDocument;
 
 public class Alien extends MovingThing
 {
@@ -41,7 +42,7 @@ public class Alien extends MovingThing
 		}
 		catch(Exception e)
 		{
-			//feel free to do something here
+			System.out.print("Something donked up with the alien image");
 		}
 	}
 
@@ -57,14 +58,12 @@ public class Alien extends MovingThing
 
    public void move(String direction)
 	{
-		if(direction.equals("LEFT")){
-			this.setX(this.getX() - speed);
-		} else if(direction.equals("RIGHT")){
+		if(direction.equals("DOWN")){
+			if(getX()>745||getX()<=5){
+				speed = -speed;
+				setY(getY()+25);
+			}
 			this.setX(this.getX() + speed);
-		}else if(direction.equals("UP")){
-			this.setX(this.getY() + speed);
-		}else if(direction.equals("DOWN")){
-			this.setX(this.getY() - speed);
 		}
 	}
 
@@ -75,6 +74,6 @@ public class Alien extends MovingThing
 
 	public String toString()
 	{
-		return "";
+		return super.toString() + speed;
 	}
 }
