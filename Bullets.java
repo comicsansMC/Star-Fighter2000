@@ -40,6 +40,7 @@ public class Bullets
 
 	public void cleanEmUp()
 	{	
+		
 	}
 
 	public List<Ammo> getList()

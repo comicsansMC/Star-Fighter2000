@@ -115,7 +115,9 @@ public void paint( Graphics window )
 			keys[4]=false;
 		}
 		
+		ship.timesShot(alienShots.getList());
 		ship.draw(graphToBack);
+		
 		// alienOne.draw(window);
 		// alienTwo.draw(window);
 		// alienOne.move(alienDirection);
