@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.awt.Image;
 
 import javax.imageio.ImageIO;
 
@@ -28,6 +29,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	private Alien alienTwo;
 	private Bullets bullets;
 	private Bullets alienShots;
+
+	private Image image;
 	
 	/* uncomment once you are ready for this part
 	*
@@ -153,9 +156,21 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	}
 		twoDGraph.drawImage(back, null, 0, 0);
 
-} else {
-	
-}
+	} else {
+		//twoDGraph.drawString("GAME OVER", x, y);
+
+		try
+		{
+			URL url = getClass().getResource("/images/GameOver.PNG");
+			image = ImageIO.read(url);
+		}
+		catch(Exception e)
+		{
+			System.out.print("Something donked up with the gameOver image");
+		}
+
+		twoDGraph.drawImage(image,getX(),getY(),getWidth(),getHeight(),null);
+	}
 	}
 
 	public void alienShots(){
