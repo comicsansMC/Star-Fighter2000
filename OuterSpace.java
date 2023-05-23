@@ -52,7 +52,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		//Ship, Alien
 		
 		
-		ship = new Ship(400, 300, 100, 100, 3);
+		ship = new Ship(400, 300, 75, 75, 3);
 		// alienOne = new Alien(200, 100, 50, 50, 2);
 		// alienTwo = new Alien(600, 100, 50, 50, 2);
 		
@@ -91,9 +91,11 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		graphToBack.setColor(Color.BLUE);
 		graphToBack.drawString("StarFighter ", 25, 50 );
 		graphToBack.setColor(Color.BLACK);
-		if(ship.timesShot(alienShots.getList()) <= 3){
+		if(ship.timesShot(alienShots.getList()) < 3){
 		graphToBack.fillRect(0,0,800,600);
 
+		graphToBack.setColor(Color.WHITE);
+		graphToBack.drawString("Lives " + (3-ship.timesShot(alienShots.getList())), 5, 15);
 
 		if(keys[0] == true)
 		{
@@ -175,7 +177,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
 	public void alienShots(){
 		Timer timer = new Timer();
-		timer.schedule(new TimedAlienShots(), 200, 200);
+		timer.schedule(new TimedAlienShots(), 500, 500);
 	}
 
 	class TimedAlienShots extends TimerTask {
